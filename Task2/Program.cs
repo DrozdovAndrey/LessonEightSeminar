@@ -21,29 +21,29 @@
 // 2 3 4 7
 namespace Seminar8
 {
-    class Program
+    class Task2
     {
         static void Main(string[] args)
         {
-                int n = new Random().Next(3,7);
-                int m = new Random().Next(3,7);
-                int[,] array = new int[n,m];
-                int[,] array2 = new int[n,m];
-                FillArray(array);
-                Console.WriteLine("Начальный Массив");
-                PrintArray(array);
-                if(m == n)   
-                {
-                    ReverseArray(array, array2);
-                    Console.WriteLine("Развернутый массив: ");
-                    PrintArray(array2);
-                }
-                else
-                {
-                    Console.WriteLine("Не возможно заменить строки столбцами");
-                }
+            int n = new Random().Next(3,7);
+            int m = new Random().Next(3,7);
+            int[,] array = new int[n,m];
+            int[,] array2 = new int[n,m];
+            FillArray(array);
+            Console.WriteLine("Начальный Массив");
+            PrintArray(array);
+            if(m == n)   
+            {
+                ReverseArray(array, array2);
+                Console.WriteLine("Развернутый массив: ");
+                PrintArray(array2);
+            }
+            else
+            {
+                Console.WriteLine("Не возможно заменить строки столбцами");
+            }
         }
-static void FillArray(int[,] array)
+        static void FillArray(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
