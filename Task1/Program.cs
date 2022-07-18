@@ -26,7 +26,7 @@ class Program
         int m = new Random().Next(3, 7);
         int[,] array = new int[m, n];
         FillArray(array);
-        Console.WriteLine($"Изначальный массив:  ");
+        Console.WriteLine($"Начальный массив:  ");
         PrintArray(array);
         Console.WriteLine("Перевернутый массив: ");
         ReplacLine(array);
