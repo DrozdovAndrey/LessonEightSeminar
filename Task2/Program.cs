@@ -1,5 +1,4 @@
-﻿// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
-// и возвращает значение этого элемента или же указание, что такого элемента нет.
+﻿// 2. Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы. В случае, если это невозможно, программа должна вывести сообщение для пользователя.
 
 // Например, задан массив:
 
@@ -9,61 +8,72 @@
 
 // 8 4 2 4
 
-// 17 -> такого числа в массиве нет
+// 5 2 6 7
 
+// В итоге получается вот такой массив:
+
+// 1 5 8 5
+
+// 4 9 4 2
+
+// 7 2 2 6
+
+// 2 3 4 7
 namespace Seminar8
 {
-    class Task2
+    class Program
     {
         static void Main(string[] args)
         {
-            int m = new Random().Next(1, 11);
-            int n = new Random().Next(1, 11);
-            int[,] array = new int[m, n];
-            FillArray(array);
-            Console.WriteLine("Введите позицию элемента в двумерном массиве.");
-            Console.WriteLine("номер строки (от 1 до 10):");
-            int str = CheckInputNumbers();
-            Console.WriteLine("номер столбца (от 1 до 10):");
-            int column = CheckInputNumbers();
-            Console.WriteLine($"Случайно сгенерированный двумерный массив с количеством строк {m} и коллличеством столбцов {n}");
-            PrintArray(array);
-            if (str > array.GetLength(0) || column > array.GetLength(1)) Console.WriteLine("Такого элемента нет!");
-            else Console.WriteLine($"Такаой элемент есть и равен: {array[str - 1, column - 1]}");
-
+                int n = new Random().Next(3,7);
+                int m = new Random().Next(3,7);
+                int[,] array = new int[n,m];
+                int[,] array2 = new int[n,m];
+                FillArray(array);
+                Console.WriteLine("Начальный Массив");
+                PrintArray(array);
+                if(m == n)   
+                {
+                    ReverseArray(array, array2);
+                    Console.WriteLine("Развернутый массив: ");
+                    PrintArray(array2);
+                }
+                else
+                {
+                    Console.WriteLine("Не возможно заменить строки столбцами");
+                }
         }
-
-        static void FillArray(int[,] array)
+static void FillArray(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < array.GetLength(1);j++)
                 {
-                    array[i, j] = new Random().Next(1, 10);
+                        array[i,j] = new Random().Next(0,10);
                 }
             }
         }
-
         static void PrintArray(int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
+                for (int j = 0; j < array.GetLength(1);j++)
                 {
-                    Console.Write(array[i, j] + " ");
+                    Console.Write(array[i,j] + " ");
                 }
                 Console.WriteLine();
             }
         }
-        static int CheckInputNumbers()
+        static void ReverseArray(int[,] array, int[,]array2)
         {
-            int number;
-            while (!int.TryParse(Console.ReadLine(), out number) || number > 10 || number < 1)
+            
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.WriteLine("Ошибка ввода! Введите целое число от 1 до 10 ");
+                for (int j = 0; j < array.GetLength(1);j++)
+                {
+                    array2[j,i]= array[i,j];
+                }
             }
-            return number;
-
         }
     }
 }
